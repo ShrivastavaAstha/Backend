@@ -1,0 +1,81 @@
+Element tab : contains HTML details. 
+Style tab : contains CSS datails.
+Network tab : keep the record of all the data when it is send and received from the backend only.
+
+Static data : when any tag has code in the hardcore. There is no interaction with backend. Frontend
+              is hardcore.
+Dynamic Data : when data is collected from backend.
+
+
+Frontend: Request for data.
+
+Backend : Analyse the data come from the frontend ,send data to the frontend and then display.
+          For every request from the frontend, there are codes written in backend server 
+          called as API (Application Programming Interface). Backend server send data in the 
+          form of responses according to request URL coming from frontend.
+          Backend server itself does not store data. It does manage the data sending/receiving logic . 
+          Server takes data from database as per demand from frontend.
+          Sometimes ,frontend also request to send data to backend like from data saving in database.
+
+Index.js : This is the root/main file of server where server will be created and started always.
+
+JSON : JavaScript Object Notation.
+       lightweight format for storing and transporting data, often used when data is sent from a 
+       server to a webpage.
+
+package.json : details of dependencies installed 
+               deployment details
+               other info etc.
+
+node_modules : contains the code of different dependencies.
+
+Packages are also called dependencies.
+
+npm : Node Package Manager
+      it is world's largest software library.
+      it is the software package manager and installer.
+
+
+some packages of npm are:
+1. express => for creating server
+2. mongoose => for connecting database
+3. bcryptjs => used for password encryption
+4. aws-sdk => used for connecting Amazon web services
+5. multer => used for image/document upload
+6. jsonwebtocken => for user authorization and security
+7. halmet => used to protect your server from malicious attack etc.
+8. sendrind => used for sending emails
+9. twilio => for sending OTP to your phonenumbers.
+
+API : Application Programming Interface
+      it is the software middleman that allows two apps to communicate with one another.
+
+Postman : it is a virtual frontend tool which is used for requesting and sending data to 
+          backend server, until frontend is not fully prepared.
+
+GET requests retrieve a resource from a server.
+
+Status Code : An HTTP status code is a message that a website 's server sends to the browser 
+              to indicate whether or not that request can be fulfilled.
+              Status codes are 200 by default. 
+              We can use http status code in our api responces.
+Responces are more often sent in the form of an array, or an object (nested object), or an array of an 
+object (nested). 
+
+If there is error in one api then the other api is not affected, it gives the correct response.
+
+Try Catch block is a very popular method of error handling in JavaScript.
+Try block contains code which is to be executed, and catch block catches error of the try block just in 
+case if any.
+This is also a standard practice which must be followed while writing any api. 
+Try catch block also prevents server from crashing, as catch block handles the error which may crash the 
+server .
+
+It is a standard practice to use /api in the initial backend api address to differentiate it with frontened 
+routes and avoid 
+
+writing single api for getting similar kind of data for multiple users/products
+whenever we want similar kind of data for different users , we cannot write separate apis for all of them 
+e.g. 10000 apis 10000 linkedin users. So to achieve this task, we use a single api which receives an extra 
+parameter from frontend which let the backend server know which user's data client is required for this 
+we use request parameters (params);
