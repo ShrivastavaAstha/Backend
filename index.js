@@ -74,7 +74,8 @@ app.get("/trycatch", (req, res) => {
       { name: "Grashi", id: 3 },
       { name: "Jolly", id: 4 },
     ];
-    return res.json({ data: nicknames[2].name, codes: 12 });
+    //return res.json({ data: nicknames[2].name, codes: 12 });
+    return res.json({ data: nicknames[nicknames.length - 1].name, codes: 12 });
   } catch (error) {
     return res.status(400).json({ success: false, error: error.message });
   }

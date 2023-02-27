@@ -21,7 +21,7 @@ Index.js : This is the root/main file of server where server will be created and
 
 JSON : JavaScript Object Notation.
        lightweight format for storing and transporting data, often used when data is sent from a 
-       server to a webpage.
+       server to a webpage. It is used as a stringify object. 
 
 package.json : details of dependencies installed 
                deployment details
@@ -53,7 +53,8 @@ API : Application Programming Interface
 Postman : it is a virtual frontend tool which is used for requesting and sending data to 
           backend server, until frontend is not fully prepared.
 
-GET requests retrieve a resource from a server.
+GET requests retrieve a resource from a server. Data is send from backend to frontend.
+POST request : Frontend sends data to backend server for storing in database. 
 
 Status Code : An HTTP status code is a message that a website 's server sends to the browser 
               to indicate whether or not that request can be fulfilled.
@@ -76,6 +77,11 @@ routes and avoid
 
 writing single api for getting similar kind of data for multiple users/products
 whenever we want similar kind of data for different users , we cannot write separate apis for all of them 
-e.g. 10000 apis 10000 linkedin users. So to achieve this task, we use a single api which receives an extra 
-parameter from frontend which let the backend server know which user's data client is required for this 
+e.g. 10000 apis 10000 linkedin users. So to achieve this task, we use a single api ,which receives an extra 
+parameter from frontend ,which let the backend server know which user's data, client is required ,for this 
 we use request parameters (params);
+we receive the variable parameter in an object i.e. "req.params"
+we can send multiple params at a time, but not too many.
+
+Whatever is sent after /api/user/ is treated as an id ,at id at the same backend api. Now we get these parameters 
+from req.params. Now we access these parameters and send relevant data by finding from database to client.
