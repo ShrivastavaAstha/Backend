@@ -10,7 +10,9 @@ app.use(express.json()); //By writing this ,we are preparing our server to recei
 
 app.post("/api/user", (req, res) => {
   try {
-    console.log(req.body);
+    console.log(req.body.name);
+    console.log(req.body.address.dist);
+    console.log(req.body.pincode);
 
     return res.json({ success: true, message: "Testing submit api" });
   } catch (error) {
