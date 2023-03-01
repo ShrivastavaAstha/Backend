@@ -73,7 +73,7 @@ Try catch block also prevents server from crashing, as catch block handles the e
 server .
 
 It is a standard practice to use /api in the initial backend api address to differentiate it with frontened 
-routes and avoid 
+routes and avoid confusion.
 
 writing single api for getting similar kind of data for multiple users/products
 whenever we want similar kind of data for different users , we cannot write separate apis for all of them 
