@@ -85,3 +85,14 @@ we can send multiple params at a time, but not too many.
 
 Whatever is sent after /api/user/ is treated as an id ,at id at the same backend api. Now we get these parameters 
 from req.params. Now we access these parameters and send relevant data by finding from database to client.
+
+SQL database uses table to represent data and they are Relational
+But MangoDB is NOSQL , Non-Relational database which does not store data in the form of tables, but store 
+them in the form of documents which are actually objects. This gives an upper hand in using MONGODB as using table
+is quite tedious.
+
+SQL uses tables, so we cannot have nested data in them. But MANGODB uses objects to store documents so we can easily
+store nested documents using nested objects.
+
+SQL uses a separate server "APACHE" for running other than the backend server, but MangoDB can run on the same 
+backend server so no separate server is needed.
