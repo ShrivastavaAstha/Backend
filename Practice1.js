@@ -39,6 +39,31 @@ app.post("/api/login", (req, res) => {
   }
 });
 
+app.post("/api/news", (req, res) => {
+  try {
+    console.log(req.body.newstitle);
+    console.log(req.body.newscategory);
+    console.log(req.body.newsdescription);
+    console.log(req.body.newsdate);
+    console.log(req.body.newsource);
+    console.log(req.body.newsviews);
+
+    const definedobject = {
+      NewsTitle: req.body.newstitle,
+      Newscategory: req.body.newscategory,
+      Newsdescription: req.body.newsdescription,
+      Newsdate: req.body.newsdate,
+      Newssource: req.body.newssource,
+      Newsviews: req.body.newsviews,
+    };
+    console.log(definedobject);
+
+    return res.json({ success: true, message: "Submitting news api" });
+  } catch (error) {
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+
 const PORT = 8000;
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
