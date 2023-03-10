@@ -59,8 +59,8 @@ POST request : Frontend sends data to backend server for storing in database.
 Status Code : An HTTP status code is a message that a website 's server sends to the browser 
               to indicate whether or not that request can be fulfilled.
               Status codes are 200 by default. 
-              We can use http status code in our api responces.
-Responces are more often sent in the form of an array, or an object (nested object), or an array of an 
+              We can use http status code in our api responses.
+Responses are more often sent in the form of an array, or an object (nested object), or an array of an 
 object (nested). 
 
 If there is error in one api then the other api is not affected, it gives the correct response.
