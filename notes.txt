@@ -96,3 +96,21 @@ store nested documents using nested objects.
 
 SQL uses a separate server "APACHE" for running other than the backend server, but MangoDB can run on the same 
 backend server so no separate server is needed.
+
+Login authorization
+There are two types of apis:
+1. Public APIs => which are freely accessible, i.e. No login required e.g. Landing pages apis etc.
+2. Private APIs => which are private, i.e. only accessible after login e.g. Your Profile, Your chats etc.
+
+A private works on the principle of cookies.
+Whenever a user login to the server with correct credentials, server returns a token (ticket),
+Now this token is stored in the cookies of the browser till the time user logs out.
+Now whenever a request to private api is made, server checks whether the token is present in the browser or not.
+If the valid token is present in the cookies, then private api runs successfully else returns authorization error.
+
+MONGODB
+MongoDB is a database which is used to store data.
+1. MangoDB store data in the form of documents which are basically objects.
+2. MangoDB stores specific kinds of data in specific buckets, which are called collections.
+3. Each collection must hold document with the same keys. i.e. Similar documents in one collection.
+4. MangoDB stores data in BSON format (Binary JSON).
