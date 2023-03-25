@@ -114,3 +114,4 @@ MongoDB is a database which is used to store data.
 2. MangoDB stores specific kinds of data in specific buckets, which are called collections.
 3. Each collection must hold document with the same keys. i.e. Similar documents in one collection.
 4. MangoDB stores data in BSON format (Binary JSON).
+

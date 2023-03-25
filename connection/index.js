@@ -12,6 +12,7 @@ const { connectDatabase } = require("./connect");
 //     console.log(error);
 //   }
 // };
+
 const a = connectDatabase();
 console.log(a);
 const PORT = 8000;
