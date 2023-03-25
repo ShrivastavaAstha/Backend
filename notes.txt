@@ -115,3 +115,14 @@ MongoDB is a database which is used to store data.
 3. Each collection must hold document with the same keys. i.e. Similar documents in one collection.
 4. MangoDB stores data in BSON format (Binary JSON).
 
+Async/Await concept (very important ***)
+=> normally in any programming language, the code execution occurs sequentially i.e. line by line or one after the 
+other.
+Because of which,  the next line waits for the previous line to be executed.
+
+so, sometimes the next line have to wait for long because the previous line may take too mush time for its execution.
+So to avoid this problem, we use Async/await functions.
+
+1.Synchronus way of coding, ie. one by one
+2.Asynchronus => If one line is taking too much time in execution, then the control may go to the next line, only if 
+the time taking line have to confirm that it will execute soon and asks to wait.
