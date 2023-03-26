@@ -13,12 +13,17 @@ const function2 = async () => {
 //console.log("Second");
 
 const function3 = async () => {
+  return "Third";
+};
+
+const final = async () => {
   const one = await function2();
   console.log(one);
   const two = await function1();
   console.log(two);
-  c;
+  const three = await function3();
+  console.log(three);
 };
 
-function3();
-console.log("Third");
+final();
+console.log("Final");
