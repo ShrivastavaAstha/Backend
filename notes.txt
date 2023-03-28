@@ -113,6 +113,7 @@ MongoDB is a database which is used to store data.
 1. MangoDB store data in the form of documents which are basically objects.
 2. MangoDB stores specific kinds of data in specific buckets, which are called collections.
 3. Each collection must hold document with the same keys. i.e. Similar documents in one collection.
+   (This is called modelling).
 4. MangoDB stores data in BSON format (Binary JSON).
 
 Async/Await concept (very important ***)
@@ -126,3 +127,6 @@ So to avoid this problem, we use Async/await functions.
 1.Synchronus way of coding, ie. one by one
 2.Asynchronus => If one line is taking too much time in execution, then the control may go to the next line, only if 
 the time taking line have to confirm that it will execute soon and asks to wait.
+
+MongoDB model precisely, tells which fields are going to be stored in that collection documents and what kind of 
+fields they would be (String, Number , Boolean).
