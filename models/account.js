@@ -1,4 +1,4 @@
-const mongoose = require("nomgoose");
+const mongoose = require("mongoose");
 
 const accountSchema = new mongoose.Schema({
   AccountNo: Number,
