@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const ticketSchema = new mongoose.Schema({
   PNR: Number,
   Trn: Number,
-  Date: Number,
-  Time: Number,
+  Date: String,
+  Time: String,
   cls: String,
   boardingStation: String,
 });
