@@ -63,6 +63,8 @@ Status Code : An HTTP status code is a message that a website's server sends to 
 Responses are more often sent in the form of an array, or an object (nested object), or an array of an 
 object (nested). 
 
+==> It is important to return the function so that it will not proceed further.
+
 If there is error in one api then the other api is not affected, it gives the correct response.
 
 Try Catch Block :
@@ -83,7 +85,9 @@ parameter from frontend ,which let the backend server know which user's data, cl
 we use request parameters (params);
 we receive the variable parameter in an object i.e. "req.params"
 we can send multiple params at a time, but not too many.
+parseInt is used to convert it into integer.
 
+The variable parameter is written after /api/user/ with colon symbol( : ) .
 Whatever is sent after /api/user/ is treated as an id ,at id at the same backend api. Now we get these parameters 
 from req.params. Now we access these parameters and send relevant data by finding from database to client.
 
