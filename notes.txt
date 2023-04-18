@@ -1,5 +1,5 @@
 Element tab : contains HTML details. 
-Style tab : contains CSS datails.
+Style tab : contains CSS details.
 Network tab : keep the record of all the data when it is send and received from the backend only.
 
 Static data : when any tag has code in the hardcore. There is no interaction with backend. Frontend
@@ -9,13 +9,13 @@ Dynamic Data : when data is collected from backend.
 
 Frontend: Request for data.
 
-Backend : Analyse the data come from the frontend ,send data to the frontend and then display.
+Backend : Analyse the data coming from the frontend ,send data to the frontend and then display.
           For every request from the frontend, there are codes written in backend server 
           called as API (Application Programming Interface). Backend server send data in the 
           form of responses according to request URL coming from frontend.
           Backend server itself does not store data. It does manage the data sending/receiving logic . 
           Server takes data from database as per demand from frontend.
-          Sometimes ,frontend also request to send data to backend like from data saving in database.
+          Sometimes ,frontend also requests to send data to backend, like from data saving in database.
 
 Index.js : This is the root/main file of server where server will be created and started always.
 
@@ -56,7 +56,7 @@ Postman : it is a virtual frontend tool which is used for requesting and sending
 GET requests retrieve a resource from a server. Data is send from backend to frontend.
 POST request : Frontend sends data to backend server for storing in database. 
 
-Status Code : An HTTP status code is a message that a website 's server sends to the browser 
+Status Code : An HTTP status code is a message that a website's server sends to the browser 
               to indicate whether or not that request can be fulfilled.
               Status codes are 200 by default. 
               We can use http status code in our api responses.
@@ -65,6 +65,7 @@ object (nested).
 
 If there is error in one api then the other api is not affected, it gives the correct response.
 
+Try Catch Block :
 Try Catch block is a very popular method of error handling in JavaScript.
 Try block contains code which is to be executed, and catch block catches error of the try block just in 
 case if any.
@@ -86,7 +87,7 @@ we can send multiple params at a time, but not too many.
 Whatever is sent after /api/user/ is treated as an id ,at id at the same backend api. Now we get these parameters 
 from req.params. Now we access these parameters and send relevant data by finding from database to client.
 
-SQL database uses table to represent data and they are Relational
+SQL database uses table to represent data and they are Relational,
 But MangoDB is NOSQL , Non-Relational database which does not store data in the form of tables, but store 
 them in the form of documents which are actually objects. This gives an upper hand in using MONGODB as using table
 is quite tedious.
@@ -102,29 +103,33 @@ There are two types of apis:
 1. Public APIs => which are freely accessible, i.e. No login required e.g. Landing pages apis etc.
 2. Private APIs => which are private, i.e. only accessible after login e.g. Your Profile, Your chats etc.
 
+Cookies :
 A private works on the principle of cookies.
 Whenever a user login to the server with correct credentials, server returns a token (ticket),
 Now this token is stored in the cookies of the browser till the time user logs out.
 Now whenever a request to private api is made, server checks whether the token is present in the browser or not.
 If the valid token is present in the cookies, then private api runs successfully else returns authorization error.
 
-MONGODB
+MONGODB :
 MongoDB is a database which is used to store data.
-1. MangoDB store data in the form of documents which are basically objects.
-2. MangoDB stores specific kinds of data in specific buckets, which are called collections.
-3. Each collection must hold document with the same keys. i.e. Similar documents in one collection.
-   (This is called modelling).
+1. MangoDB stores data in the form of documents which are basically objects.
+2. MangoDB stores specific kinds of data in specific buckets, which are called Collections.
+3. Each collection must hold document with the same keys. i.e. similar documents in one collection.
+   (This is called Modelling).
 4. MangoDB stores data in BSON format (Binary JSON).
 
-Async/Await concept (very important ***)
-=> normally in any programming language, the code execution occurs sequentially i.e. line by line or one after the 
-other.
-Because of which,  the next line waits for the previous line to be executed.
+==> MongoDB model precisely, tells which fields are going to be stored in that collection documents and what kind of 
+fields they would be (String, Number, Boolean).
 
-so, sometimes the next line have to wait for long because the previous line may take too mush time for its execution.
+
+Async/Await concept (very important ***) :
+=> Normally in any programming language, the code execution occurs sequentially i.e. line by line or one after the 
+other.
+Because of which, the next line waits for the previous line to be executed.
+So, sometimes the next line have to wait for long because the previous line may take too much time for its execution.
 So to avoid this problem, we use Async/await functions.
 
-1.Synchronus way of coding, ie. one by one
+1.Synchronus way of coding, i.e. one by one.
 2.Asynchronus => If one line is taking too much time in execution, then the control may go to the next line, only if 
 the time taking line have to confirm that it will execute soon and asks to wait.
 
