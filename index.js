@@ -8,6 +8,7 @@ const ACCOUNT_MODEL = require("./models/account");
 const BLOG_MODEL = require("./models/blog");
 const BOOK_MODEL = require("./models/book");
 const ELECTRICITY_MODEL = require("./models/Electricity");
+const STUDENT_MODEL = require("./models/student");
 const TICKET_MODEL = require("./models/Ticket");
 app.use(express.json());
 app.post("/api/connectdata", async (req, res) => {
@@ -108,6 +109,28 @@ app.post("/api/electricitydata", async (req, res) => {
     const elecData = new ELECTRICITY_MODEL(elecobj);
     await elecData.save();
     return res.status(400).json({ success: true, message: "Data connected" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+
+app.post("/api/studentdata", async (req, res) => {
+  try {
+    const stuobj = {
+      Name: req.body.name,
+      RollNo: req.body.rollno,
+      Class: req.body.class,
+      Age: req.body.age,
+      School: req.body.school,
+      ContactNo: req.body.contactno,
+    };
+    console.log(stuobj);
+
+    await new STUDENT_MODEL(stuobj).save();
+    return res
+      .status(400)
+      .json({ success: true, message: "Database Connected" });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ success: false, error: error.message });
