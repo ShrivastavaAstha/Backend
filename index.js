@@ -34,7 +34,15 @@ app.post("/api/connectdata", async (req, res) => {
     return res.status(400).json({ success: false, error: error.message });
   }
 });
-
+app.get("/api/getuser", async (req, res) => {
+  try {
+    const userdata = await USER_MODEL.find();
+    return res.json({ success: true, data: userdata });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 app.post("/api/accountdata", async (req, res) => {
   try {
     const accobj = {
@@ -52,6 +60,15 @@ app.post("/api/accountdata", async (req, res) => {
     await accData.save();
 
     return res.status(400).json({ success: true, message: "Data connected" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.get("/api/getaccount", async (req, res) => {
+  try {
+    const accountdata = await ACCOUNT_MODEL.find();
+    return res.json({ success: true, data: accountdata });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ success: false, error: error.message });
@@ -75,6 +92,15 @@ app.post("/api/blogdata", async (req, res) => {
     return res.status(400).json({ success: false, error: error.message });
   }
 });
+app.get("/api/getblog", async (req, res) => {
+  try {
+    const blogdata = await BLOG_MODEL.find();
+    return res.json({ success: true, data: blogdata });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 
 app.post("/api/bookdata", async (req, res) => {
   try {
@@ -90,6 +116,15 @@ app.post("/api/bookdata", async (req, res) => {
     const bookData = new BOOK_MODEL(bookobj);
     await bookData.save();
     return res.status(400).json({ success: true, message: "Data connected" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.get("/api/getbook", async (req, res) => {
+  try {
+    const bookdata = await BOOK_MODEL.find();
+    return res.json({ success: true, data: bookdata });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ success: false, error: error.message });
