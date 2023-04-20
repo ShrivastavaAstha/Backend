@@ -20,7 +20,7 @@ app.get("/api/novel/:id", (req, res) => {
   try {
     let novelid = parseInt(req.params.id);
     let novel = [
-      { id: 1, name: "Make Your Bed", author: "William H.McRaven" },
+      { id: 1, name: "Make Your  Bed", author: "William H.McRaven" },
       { id: 2, name: "As a Man Thinketh", author: "James Allen" },
       { id: 3, name: "The Last Lecture", author: "Jeffrey Zaslow" },
     ];

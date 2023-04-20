@@ -20,7 +20,7 @@ app.post("/api/data", (req, res) => {
   }
 });
 
-app.post("/api/signin", (req, res) => {
+app.post("/api/signinn", (req, res) => {
   try {
     let originalPassword = "happysoul";
     let enteredPassword = req.body.password;
