@@ -10,6 +10,7 @@ const BOOK_MODEL = require("./models/book");
 const ELECTRICITY_MODEL = require("./models/Electricity");
 const STUDENT_MODEL = require("./models/student");
 const TICKET_MODEL = require("./models/Ticket");
+const WEATHER_MODEL = require("./models/weather");
 app.use(express.json());
 app.post("/api/connectdata", async (req, res) => {
   try {
@@ -114,16 +115,25 @@ app.post("/api/electricitydata", async (req, res) => {
     return res.status(400).json({ success: false, error: error.message });
   }
 });
+app.get("/api/getelec", async (req, res) => {
+  try {
+    const elecdata = await ELECTRICITY_MODEL.find();
+    return res.json({ success: true, data: studentdata });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 
 app.post("/api/studentdata", async (req, res) => {
   try {
     const stuobj = {
-      Name: req.body.name,
-      RollNo: req.body.rollno,
-      Class: req.body.class,
-      Age: req.body.age,
-      School: req.body.school,
-      ContactNo: req.body.contactno,
+      name: req.body.name,
+      rollno: req.body.rollno,
+      class: req.body.class,
+      age: req.body.age,
+      school: req.body.school,
+      contactno: req.body.contactno,
     };
     console.log(stuobj);
 
@@ -131,6 +141,15 @@ app.post("/api/studentdata", async (req, res) => {
     return res
       .status(400)
       .json({ success: true, message: "Database Connected" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.get("/api/getstudent", async (req, res) => {
+  try {
+    const studentdata = await STUDENT_MODEL.find();
+    return res.json({ success: true, data: studentdata });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ success: false, error: error.message });
@@ -156,7 +175,47 @@ app.post("/api/ticketdata", async (req, res) => {
     return res.status(400).json({ success: false, error: error.message });
   }
 });
+app.get("/api/getticket", async (req, res) => {
+  try {
+    const ticketdata = await TICKET_MODEL.find();
+    return res.json({ success: true, data: ticketdata });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 
+app.post("/api/weather", async (req, res) => {
+  try {
+    const weatherobj = {
+      Country: req.body.country,
+      City: req.body.city,
+      Date: req.body.date,
+      Temperature: req.body.temp,
+      Weather: req.body.weather,
+      Precipitation: req.body.preci,
+      Pressure: req.body.press,
+      Humidity: req.body.humid,
+    };
+    console.log(weatherobj);
+    const weatherData = new WEATHER_MODEL(weatherobj);
+    await weatherData.save();
+    return res.status(400).json({ success: true, message: "Data connected" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+
+app.get("/api/getweather", async (req, res) => {
+  try {
+    const weathdata = await WEATHER_MODEL.find();
+    return res.json({ success: true, data: weathdata });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 const a = connectDatabase();
 console.log(a);
 const PORT = 8000;
