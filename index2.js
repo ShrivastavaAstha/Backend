@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
 
-const { connectDatabase } = "./connection/connect";
+const { connectDatabase } = require("./connection/connect");
 const WEATHER_MODEL = require("./models/weather");
+const PROJECT_MODEL = require("./models/Project");
 app.use(express.json());
 app.post("/api/weather", async (req, res) => {
   try {
     const weatherobj = {
-      Contry: req.body.country,
+      Country: req.body.country,
       City: req.body.city,
       Date: req.body.date,
       Temperature: req.body.temp,
@@ -33,6 +34,34 @@ app.get("/api/getweather", async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.post("/api/projectdata", async (req, res) => {
+  try {
+    const projectobj = {
+      Project_Name: req.body.projectname,
+      Start_Date: req.body.startdate,
+      End_Date: req.body.enddate,
+      No_of_members: req.body.members,
+    };
+    console.log(projectobj);
+
+    const projectData = new PROJECT_MODEL(projectobj);
+    await projectData.save();
+
+    return res.json({ success: true, message: "Data connected" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.get("/api/getproject", async (req, res) => {
+  try {
+    const projectdata = await PROJECT_MODEL.find();
+    return res.json({ success: true, data: projectdata });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: true, data: projectdata });
   }
 });
 const a = connectDatabase();

@@ -10,7 +10,7 @@ const BOOK_MODEL = require("./models/book");
 const ELECTRICITY_MODEL = require("./models/Electricity");
 const STUDENT_MODEL = require("./models/student");
 const TICKET_MODEL = require("./models/Ticket");
-const WEATHER_MODEL = require("./models/weather");
+
 app.use(express.json());
 app.post("/api/connectdata", async (req, res) => {
   try {
