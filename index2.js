@@ -64,6 +64,43 @@ app.get("/api/getproject", async (req, res) => {
     return res.status(400).json({ success: true, data: projectdata });
   }
 });
+
+app.get("/api/latestproject", async (req, res) => {
+  try {
+    const sortedproject = await PROJECT_MODEL.find().sort({ End_Date: 1 });
+    //We write .sort() to sort documents and inside .sort(object mentioning key field)
+    //-1 means descending order and 1 is ascending order
+    return res.json({ success: true, data: sortedproject });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+
+app.get("/api/limitedproject", async (req, res) => {
+  try {
+    const sortedproject = await PROJECT_MODEL.find().limit(1);
+    // for getting limited documents we use .limit(Number). It will give only given Number of documents
+    return res.json({ success: true, data: sortedproject });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+
+app.get("/api/latesttwo", async (req, res) => {
+  try {
+    const sortedproject = await PROJECT_MODEL.find()
+      .sort({ End_Date: 1 })
+      .limit(2);
+    //always sort comes first then limit
+    return res.json({ success: true, data: sortedproject });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+
 const a = connectDatabase();
 console.log(a);
 const PORT = 8000;
