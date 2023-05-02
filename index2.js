@@ -230,6 +230,19 @@ app.get("/api/findbyid/:id", async (req, res) => {
 });
 // it gets id from the frontend.
 
+//Pagination:
+//It works on skip and limit function:
+app.get("/pagination", async (req, res) => {
+  try {
+    const paginatedstu = await STUDENT_MODEL.find()
+      .skip((pageno - 1) * 40)
+      .limit(10);
+    return res.status(200).json({ success: true, data: paginatedstu });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 //----------------------------------UPDATE OPERATION-----------------------------------------------
 //In read operation, first bracket is filter and second is projection, but in update operation,
 //first bracket is filter, but the second is the updated object you want .
