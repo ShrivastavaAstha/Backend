@@ -102,7 +102,7 @@ app.get("/api/latesttwo", async (req, res) => {
   }
 });
 
-//>>>>>>>>>>>>>>>>>>>>>>>>STUDENT DATA--------------->
+//------------------------------------------STUDENT DATA--------------------------------------->
 
 app.post("/api/studentdata", async (req, res) => {
   try {
@@ -230,7 +230,42 @@ app.get("/api/findbyid/:id", async (req, res) => {
 });
 // it gets id from the frontend.
 
-//-------------------------------UPDATE OPERATION----------------------------------------
+//----------------------------------UPDATE OPERATION-----------------------------------------------
+//In read operation, first bracket is filter and second is projection, but in update operation,
+//first bracket is filter, but the second is the updated object you want .
+// Put http is the defined http for update operation but we generally use post operation for it.
+
+//UPDATE operation by using id
+app.put("/update/:id", async (req, res) => {
+  try {
+    const data = await STUDENT_MODEL.findByIdAndUpdate(req.params.id, {
+      class: 11,
+      name: "Astha Srivastava",
+    });
+    return res.status(200).json({
+      success: true,
+      data: data,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+
+//--------------------------DELETE OPERATION---------------------------------
+//delete by id
+app.delete("/delete/:id", async (req, res) => {
+  try {
+    const deletedoc = await STUDENT_MODEL.findByIdAndDelete(req.params.id);
+    return res.status(200).json({
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+//------------------------------------------------------------------------------------------------------
 const a = connectDatabase();
 console.log(a);
 const PORT = 8000;
