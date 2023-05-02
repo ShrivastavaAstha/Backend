@@ -168,7 +168,7 @@ app.post("/api/studentdata", async (req, res) => {
       class: req.body.class,
       age: req.body.age,
       school: req.body.school,
-      contactno: req.body.contactno,
+      contactno: req.body.contact_no,
     };
     console.log(stuobj);
 
@@ -190,6 +190,7 @@ app.get("/api/getstudent", async (req, res) => {
     return res.status(400).json({ success: false, error: error.message });
   }
 });
+
 app.post("/api/ticketdata", async (req, res) => {
   try {
     const ticketobj = {

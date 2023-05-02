@@ -4,6 +4,7 @@ const app = express();
 const { connectDatabase } = require("./connection/connect");
 const WEATHER_MODEL = require("./models/weather");
 const PROJECT_MODEL = require("./models/Project");
+const STUDENT_MODEL = require("./models/student");
 app.use(express.json());
 app.post("/api/weather", async (req, res) => {
   try {
@@ -101,6 +102,78 @@ app.get("/api/latesttwo", async (req, res) => {
   }
 });
 
+//>>>>>>>>>>>>>>>>>>>>>>>>STUDENT DATA--------------->
+
+app.post("/api/studentdata", async (req, res) => {
+  try {
+    const stuobj = {
+      name: req.body.name,
+      rollno: req.body.rollno,
+      class: req.body.class,
+      age: req.body.age,
+      school: req.body.school,
+      contactno: req.body.contact_no,
+    };
+    console.log(stuobj);
+
+    await new STUDENT_MODEL(stuobj).save();
+    return res
+      .status(400)
+      .json({ success: true, message: "Database Connected" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.get("/api/getstudent", async (req, res) => {
+  try {
+    const studentdata = await STUDENT_MODEL.find();
+    return res.json({ success: true, data: studentdata });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.get("/api/lateststudent", async (req, res) => {
+  try {
+    const sortedstudent = await STUDENT_MODEL.find().sort({ class: -1 });
+    return res.json({ success: true, data: sortedstudent });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.get("/api/limitedstudent", async (req, res) => {
+  try {
+    const sortedstudent = await STUDENT_MODEL.find().limit(2);
+    return res.json({ success: true, data: sortedstudent });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.get("/api/limitedtwostu", async (req, res) => {
+  try {
+    const sortedstudent = await STUDENT_MODEL.find()
+      .sort({ class: -1 })
+      .limit(2);
+    return res.json({ success: true, data: sortedstudent });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+app.get("/api/filterstu", async (req, res) => {
+  try {
+    const sortedstudent = await STUDENT_MODEL.find({ school: "bvp" }).sort({
+      class: -1,
+    });
+    return res.json({ success: true, data: sortedstudent });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
 const a = connectDatabase();
 console.log(a);
 const PORT = 8000;
