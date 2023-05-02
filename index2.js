@@ -165,7 +165,28 @@ app.get("/api/limitedtwostu", async (req, res) => {
 });
 app.get("/api/filterstu", async (req, res) => {
   try {
-    const sortedstudent = await STUDENT_MODEL.find({ school: "bvp" }).sort({
+    const sortedstudent = await STUDENT_MODEL.find(
+      { school: "bvp" },
+      { name: 1, class: 1 }
+    )
+      .sort({
+        class: -1,
+      })
+      .limit(1);
+    return res.json({ success: true, data: sortedstudent });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+//finds first bracket gives the filter that only those data will be shown that passes the given filter criteria.
+//and second bracket gives the projection that only the given projection data should present .
+app.get("/api/findone", async (req, res) => {
+  try {
+    const sortedstudent = await STUDENT_MODEL.findOne(
+      { school: "bvp" },
+      { name: 1, class: 1 }
+    ).sort({
       class: -1,
     });
     return res.json({ success: true, data: sortedstudent });
@@ -174,6 +195,42 @@ app.get("/api/filterstu", async (req, res) => {
     return res.status(400).json({ success: false, error: error.message });
   }
 });
+//to find only one document.
+app.get("/api/findbyid", async (req, res) => {
+  try {
+    const sortedstudent = await STUDENT_MODEL.findById(
+      "64507233308a1609368c979f",
+      {
+        name: 1,
+        class: 1,
+      }
+    ).sort({
+      class: -1,
+    });
+    return res.json({ success: true, data: sortedstudent });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+//it finds the data that has the given id.
+app.get("/api/findbyid/:id", async (req, res) => {
+  try {
+    const sortedstudent = await STUDENT_MODEL.findById(req.params.id, {
+      name: 1,
+      class: 1,
+    }).sort({
+      class: -1,
+    });
+    return res.json({ success: true, data: sortedstudent });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ success: false, error: error.message });
+  }
+});
+// it gets id from the frontend.
+
+//-------------------------------UPDATE OPERATION----------------------------------------
 const a = connectDatabase();
 console.log(a);
 const PORT = 8000;
