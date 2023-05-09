@@ -75,7 +75,7 @@ This is also a standard practice which must be followed while writing any api.
 Try catch block also prevents server from crashing, as catch block handles the error which may crash the 
 server .
 
-It is a standard practice to use /api in the initial backend api address to differentiate it with frontened 
+It is a standard practice to use /api in the initial backend api address to differentiate it with frontend 
 routes and avoid confusion.
 
 writing single api for getting similar kind of data for multiple users/products
