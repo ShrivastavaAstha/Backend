@@ -19,6 +19,11 @@ Backend : Analyse the data coming from the frontend ,send data to the frontend a
 
 Index.js : This is the root/main file of server where server will be created and started always.
 
+Steps to create backend file:
+ 1. npm init -y
+ 2. npm install express
+ 3. npm install mongoose
+
 JSON : JavaScript Object Notation.
        lightweight format for storing and transporting data, often used when data is sent from a 
        server to a webpage. It is used as a stringify object. 
